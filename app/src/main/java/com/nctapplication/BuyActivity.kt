@@ -123,7 +123,7 @@ class BuyActivity : AppCompatActivity() , PaymentStatusListener {
         )
 
     }
-
+//test
     fun uploadtransaction(transactionid : String){
         //val TAG = javaClass.simpleName
         binding.spinKit.visibility = View.VISIBLE
