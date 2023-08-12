@@ -1,5 +1,6 @@
 package com.nctapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,17 +22,24 @@ import com.nctapplication.model.repurchase.RepurchaseList
 import com.nctapplication.response.AddrepurchaseResponse
 import com.nctapplication.response.ProductlistResponse
 import com.nctapplication.response.RepurchaseApiResponse
+import com.nctapplication.response.TransactionDetailsResponse
 import com.nctapplication.util.Utils
 import com.nctapplication.viewmodel.AddrepurchaseViewModel
 import com.nctapplication.viewmodel.ProductlistViewModel
 import com.nctapplication.viewmodel.RepurchaseViewModel
+import com.nctapplication.viewmodel.TransactionDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import dev.shreyaspatil.easyupipayment.EasyUpiPayment
+import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener
+import dev.shreyaspatil.easyupipayment.model.PaymentApp
+import dev.shreyaspatil.easyupipayment.model.TransactionDetails
+import dev.shreyaspatil.easyupipayment.model.TransactionStatus
 import io.paperdb.Paper
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 @AndroidEntryPoint
-class PurchaseActivity : AppCompatActivity() {
+class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
     private lateinit var binding: ActivityPurchaseBinding
     var doubleBounce: Sprite = DoubleBounce()
     lateinit var productid1: String ;
@@ -49,7 +57,10 @@ class PurchaseActivity : AppCompatActivity() {
     lateinit var product_qnty2: String
     lateinit var product_qnty3: String
     lateinit var product_qnty4: String
-
+    private lateinit var easyUpiPayment: EasyUpiPayment
+    val transaction_Id = "TID" + System.currentTimeMillis()
+    lateinit var descriptionupi: String
+    var productprice : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -279,6 +290,136 @@ class PurchaseActivity : AppCompatActivity() {
             val viewModel: AddrepurchaseViewModel = ViewModelProvider(this).get(AddrepurchaseViewModel::class.java)
             viewModel.add_repurchase(requestBody)?.observe(this@PurchaseActivity,object : Observer<AddrepurchaseResponse?> {
                 override fun onChanged(apiResponse: AddrepurchaseResponse?) {
+
+                    if (apiResponse == null) {
+                        // handle error here
+                        binding.spinKit.visibility = View.GONE
+                        return
+                    }
+                    if (apiResponse.error == null) {
+                        // call is successful
+                        binding.spinKit.setVisibility(View.GONE);
+                        if (apiResponse.posts == null) {
+                            binding.spinKit.visibility = View.GONE
+                            Utils.showToast(
+                                resources.getString(R.string.data_not_found),
+                                this@PurchaseActivity
+                            )
+
+                        } else {
+                            if (apiResponse.getPosts().success == true) {
+                                Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
+                                finish()
+                            } else if (apiResponse.getPosts().success==false) {
+                                Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
+                            }
+                        }
+                    } else {
+                        // call failed.
+                        binding.spinKit.visibility = View.GONE
+                        val e = apiResponse.error
+
+                    }
+                }
+
+            })
+        }else{
+            Utils.showToast(resources.getString(R.string.no_internet),this@PurchaseActivity)
+        }
+    }
+    fun upipayment(){
+
+        try {
+            easyUpiPayment = EasyUpiPayment(this) {
+                this.paymentApp = PaymentApp.ALL
+                this.payeeVpa = "nct150@cnrb"
+                this.payeeName = "N C T ENTERPRISES"
+                this.transactionId = transaction_Id
+                this.transactionRefId = transaction_Id
+                this.payeeMerchantCode = transaction_Id
+                this.description = descriptionupi
+                this.amount = productprice.toDoubleOrNull()?.toString()
+            }
+            // END INITIALIZATION
+
+            // Register Listener for Events
+            easyUpiPayment.setPaymentStatusListener(this)
+
+            // Start payment / transaction
+            easyUpiPayment.startPayment()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Utils.showToast(
+                e.message,
+                this@PurchaseActivity
+            )
+        }
+    }
+    override fun onTransactionCompleted(transactionDetails: TransactionDetails) {
+        // Transaction Completed
+
+        when (transactionDetails.transactionStatus) {
+            TransactionStatus.SUCCESS -> onTransactionSuccess(transactionDetails.transactionId.toString())
+            TransactionStatus.FAILURE -> onTransactionFailed()
+            TransactionStatus.SUBMITTED -> onTransactionSubmitted()
+        }
+    }
+
+    override fun onTransactionCancelled() {
+        // Payment Cancelled by User
+        Utils.showToast(
+            "Cancelled by user",
+            this@PurchaseActivity
+        )
+
+    }
+
+    private fun onTransactionSuccess(transactionid: String) {
+        // Payment Success
+        Utils.showToast(
+            "Success",
+            this@PurchaseActivity
+        )
+        uploadtransaction(transactionid)
+    }
+
+    private fun onTransactionSubmitted() {
+        // Payment Pending
+        Utils.showToast(
+            "Pending | Submitted",
+            this@PurchaseActivity
+        )
+
+    }
+
+    private fun onTransactionFailed() {
+        // Payment Failed
+        Utils.showToast(
+            "Failed",
+            this@PurchaseActivity
+        )
+
+    }
+    fun uploadtransaction(transactionid : String){
+        //val TAG = javaClass.simpleName
+        binding.spinKit.visibility = View.VISIBLE
+        binding.spinKit.setIndeterminateDrawable(doubleBounce)
+
+
+
+        val requestBody: RequestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("member_id", Paper.book().read<Int>("memberid", 0).toString())
+            .addFormDataPart("amount", productprice)
+            .addFormDataPart("transaction_id", transactionid)
+            .build()
+
+        if(MyApp.getInstance()!!.isNetworkAvailable()){
+            val viewModel: TransactionDetailsViewModel = ViewModelProvider(this).get(
+                TransactionDetailsViewModel::class.java)
+            viewModel.insert_transactiondtls(requestBody)?.observe(this@PurchaseActivity,object :
+                Observer<TransactionDetailsResponse?> {
+                override fun onChanged(apiResponse: TransactionDetailsResponse?) {
 
                     if (apiResponse == null) {
                         // handle error here
