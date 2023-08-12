@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        tools:context=".BuyActivity">
+
+        <RelativeLayout
+            android:id="@+id/curveshape"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/curveshape">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/wallet" />
+        </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/curveshape"
+    android:id="@+id/rel"
+    android:weightSum="2"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/padding_10"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/userid"
+            style="@style/textStylehdpi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_blue1"
+            android:paddingLeft="@dimen/padding_10"
+            android:paddingRight="@dimen/padding_10"
+            android:text="@string/userid"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/padding_10"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/referid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/rounded_button_blue1"
+            android:paddingLeft="@dimen/padding_10"
+            android:paddingRight="@dimen/padding_10"
+            android:text="@string/referid"
+            style="@style/textStylehdpi"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/padding_10"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center">
+
+                    <com.nctapplication.circleimage.CircleImageView
+                        android:id="@+id/profile_pic"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        app:civ_border_color="#00ffffff"
+                        app:civ_border_width="0dp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/camera"
+                        android:layout_width="30dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/padding_10"
+                        android:background="@drawable/camera" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/name"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_corner"
+                    android:editable="false"
+                    android:hint="@string/name"
+                    android:paddingStart="25dp"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/phone"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_corner"
+                    android:editable="false"
+                    android:hint="@string/phone"
+                    android:paddingStart="25dp"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_corner"
+                    android:hint="@string/email1"
+                    android:paddingStart="25dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/adhar"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_corner"
+                    android:editable="false"
+                    android:hint="@string/aadhar"
+                    android:paddingStart="25dp"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/pan"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_corner"
+                    android:editable="false"
+                    android:hint="@string/pan"
+                    android:paddingStart="25dp"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submitbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:background="@drawable/rounded_button_orange"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="35dp"
+                    android:text="@string/submit"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </ScrollView>
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:SpinKit_Color="@color/orange" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        tools:context=".BuyActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/curveshape"
+            android:id="@+id/curveshape"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/wallet" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/curveshape"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/padding_5"
+            android:padding="@dimen/padding_5"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/padding_2"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStylexhdpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/award1"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/directsale"
+                    style="@style/textStylexhdpi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/padding_2"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStylexhdpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/award2"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/membership"
+                    style="@style/textStylexhdpi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/padding_2"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStylexhdpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/award3"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/repurchasing"
+                    style="@style/textStylexhdpi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin1"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/padding_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/referid"
+                style="@style/textStylexhdpi"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_oneside"
+                android:clickable="false"
+                android:hint="XXXXX"
+                android:paddingStart="25dp"
+                android:textColorHint="@color/grey" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sharebtn"
+                style="@style/textStylexhdpi"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_oneside1"
+                android:text="@string/share"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/lin2"
+            android:id="@+id/lin3"
+            android:layout_marginTop="@dimen/padding_15"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/claimbtn"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_topleft"
+                android:text="@string/claim_amount"
+                style="@style/textStylexhdpi"
+                android:textColor="@color/white"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/claimamount"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_topright"
+                android:text=""
+                style="@style/textStylexhdpi"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/lin3"
+            android:id="@+id/lin4"
+            android:layout_marginTop="2dp"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/payout"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_bottomleftt"
+                android:text="@string/payout"
+                style="@style/textStylexhdpi"
+                android:textColor="@color/white"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/payoutamount"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_bottomright"
+                android:text="\u20B9"
+                style="@style/textStylexhdpi"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/horizontalRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin4"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:SpinKit_Color="@color/orange" />
+    </RelativeLayout>
+</layout>

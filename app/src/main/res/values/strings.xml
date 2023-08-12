@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">NCT</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">FORGOT PASSWORD</string>
+    <string name="forgot_password1">FORGOT YOUR PASSWORD?</string>
+    <string name="dont_worry">DON\'T WORRY</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email(optional)</string>
+    <string name="email1">Email id</string>
+    <string name="fname">First name</string>
+    <string name="lname">Last name</string>
+    <string name="phone">Phone no</string>
+    <string name="name">name</string>
+    <string name="aadhar">Aadhar card no</string>
+    <string name="referral">Referral code(optional)</string>
+    <string name="blankfield">Field cannot be blank</string>
+    <string name="blankfieldemail">Email cannot be blank</string>
+    <string name="no_internet">No Network Available</string>
+    <string name="blankfieldadhar">Upload adhar card image</string>
+    <string name="profileimageblank">Upload profile image</string>
+    <string name="blankfieldpan">Upload pan card image</string>
+    <string name="pan">Pan card no</string>
+    <string name="next">NEXT</string>
+    <string name="upload">UPLOAD</string>
+    <string name="packet">1 packet of \u20B9 </string>
+    <string name="paynow">PAY NOW</string>
+    <string name="processing">PROCESSING</string>
+    <string name="minute">Do not close the app.\n It might take upto 2-3 minutes</string>
+    <string name="userid">USER ID</string>
+    <string name="referid">REFFERAL ID</string>
+    <string name="submit">SUBMIT</string>
+
+
+    <string-array name="nav_drawer_labels">
+        <item>DASHBOARD</item>
+        <item>MY PROFILE</item>
+        <item>WALLET</item>
+        <item>RE PURCHASE</item>
+        <item>DIRECT SELL</item>
+        <item>DISTRIBUTOR</item>
+        <item>CLAIM</item>
+        <item>PAYOUT</item>
+        <item>MEMBER LIST</item>
+        <item>LOGOUT</item>
+    </string-array>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="award1">DIRECT SALE AWARD</string>
+    <string name="award2">DISTRIBUTOR AWARD</string>
+    <string name="award3">REPURCHASING AWARD</string>
+    <string name="share">SHARE REFFERAL</string>
+    <string name="claim_amount">CLAIM AMOUNT</string>
+    <string name="payout">PAYOUT</string>
+    <string name="signup">SIGN UP</string>
+    <array name="images">
+        <item>@drawable/dashboard</item>
+        <item>@drawable/myprofile_icon</item>
+        <item>@drawable/wallet_icon_menu</item>
+        <item>@drawable/repurchase_icon</item>
+        <item>@drawable/direct_sell_icon</item>
+        <item>@drawable/membership_icon</item>
+        <item>@drawable/claim_icon</item>
+        <item>@drawable/payout_icon</item>
+        <item>@drawable/team</item>
+        <item>@drawable/logout</item>
+    </array>
+    <string name="saleaward">DIRECT SALE AWARD</string>
+    <string name="membershipaward">DISTRIBUTOR AWARD</string>
+    <string name="repurchaseaward">REPURCHASING AWARD</string>
+    <string name="totalaward">TOTAL AWARD</string>
+    <string name="rupee">\u20B9</string>
+    <string name="claim">CLAIM</string>
+    <string name="balance">BALANCE</string>
+    <string name="repurchase">REPURCHASE</string>
+    <string name="date">DATE</string>
+    <string name="qty">QTY</string>
+    <string name="total">TOTAL</string>
+    <string name="award">AWARD</string>
+    <string name="direct">DIRECT SELL</string>
+    <string name="name1">NAME</string>
+    <string name="load">Load More..</string>
+    <string name="create_new">CREATE NEW PASSWORD</string>
+    <string name="different_password">Your new password must be different from previous used passwords</string>
+    <string name="enter_password">ENTER NEW PASSWORD</string>
+    <string name="confirm_password">CONFIRM PASSWORD</string>
+    <string name="passwordlength">Password must be atleast 6 charecters</string>
+    <string name="password_update">PASSWORD UPDATED</string>
+    <string name="password_chang">Your Password has been changed successfully.\n Use your new password to login.</string>
+    <string name="quantity">QUANTITY</string>
+    <string name="amount">AMOUNT</string>
+    <string name="previous_payout">PREVIOUS PAYOUT</string>
+    <string name="transactions">view transactions</string>
+    <string name="next_payout">NEXT PAYOUT</string>
+    <string name="allmember">ALL MEMBER</string>
+    <string name="data_not_found">data not found</string>
+    <string name="search">Search</string>
+    <string name="status">STATUS</string>
+    <string name="comission">COMISSION</string>
+    <string name="uploaded">Uploaded</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="productname">Product Name</string>
+    <string name="selectquantity">Select quantity</string>
+    <string name="selecttype">Select Transaction type</string>
+    <string name="selectproduct">select/enter atleast 1 product to reprchase</string>
+    <string name="acname">Enter account name</string>
+    <string name="claimamount">Enter claim amount</string>
+    <string name="acnumber">Enter account number</string>
+    <string name="ifsc">Enter ifsc code</string>
+    <string name="claimsuccess">Claim request sent successfully</string>
+    <string-array name="Languages">
+        <item>Cash</item>
+        <item>Bank Transfer</item>
+        <item>Gateway Transfer</item>
+    </string-array>
+</resources>

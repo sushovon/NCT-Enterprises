@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background1"
+        tools:context=".RegisterActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/register_text"
+            android:background="@drawable/logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/register_text"
+            style="@style/textStylelarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/scroll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/footer"
+            android:id="@+id/scroll"
+            android:layout_marginBottom="@dimen/padding_10"
+            android:layout_marginTop="10dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mid_rel"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/firstname"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/fname"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/lastname"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/lname"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/phone"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/phone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/password"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/aadhar"
+                            android:layout_width="280dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/aadhar"
+                            android:inputType="number"
+                            android:maxLength="12"
+                            android:paddingStart="25dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/grey" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/adharbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/rounded_button_blue"
+                            android:text="@string/upload"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/pan"
+                            android:layout_width="280dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/pan"
+                            android:maxLength="12"
+                            android:paddingStart="25dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/grey" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/panbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/rounded_button_blue"
+                            android:text="@string/upload"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/referral"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/referral"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/email"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="@string/email"
+                        android:paddingStart="25dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submitbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button_orange"
+                        android:paddingLeft="35dp"
+                        android:paddingRight="35dp"
+                        android:text="@string/next"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:SpinKit_Color="@color/orange" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/footer"
+            android:background="@drawable/footer" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/padding_10"
+        tools:context=".BuyActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/deepblue"
+            android:padding="@dimen/padding_10"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/memberId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <com.nctapplication.circleimage.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:layout_toRightOf="@+id/memberId"
+                android:scaleType="centerCrop"
+                app:civ_border_color="#00ffffff"
+                app:civ_border_width="0dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/profile_pic"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:weightSum="2">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:id="@+id/memberFname"
+                android:textColor="@color/white" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:id="@+id/memberPhoneno"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

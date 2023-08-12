@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="DASHBOARD" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/myprofile_icon"
+            android:title="MY PROFILE" />
+        <item
+            android:id="@+id/wallet"
+            android:icon="@drawable/wallet_icon_menu"
+            android:title="WALLET" />
+        <item
+            android:id="@+id/repurchse"
+            android:icon="@drawable/repurchase_icon"
+            android:title="RE PURCHASE" />
+        <item
+            android:id="@+id/directsale"
+            android:icon="@drawable/direct_sell_icon"
+            android:title="DIRECT SELL" />
+        <item
+            android:id="@+id/membership"
+            android:icon="@drawable/membership_icon"
+            android:title="DISTRIBUTOR" />
+        <item
+            android:id="@+id/claim"
+            android:icon="@drawable/claim_icon"
+            android:title="CLAIM" />
+        <item
+            android:id="@+id/payout"
+            android:icon="@drawable/payout_icon"
+            android:title="PAYOUT" />
+        <item
+            android:id="@+id/memberlist"
+            android:icon="@drawable/team"
+            android:title="MEMBER LIST" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="LOGOUT" />
+    </group>
+
+   <!-- <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>
