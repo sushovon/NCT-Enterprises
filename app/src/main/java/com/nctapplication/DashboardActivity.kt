@@ -2,6 +2,7 @@ package com.nctapplication
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.nctapplication.circleimage.CircleImageView
+import com.nctapplication.commons.Commonfun
 import com.nctapplication.commons.Constants
 import com.nctapplication.commons.MyApp
 import com.nctapplication.commons.MyApplication
@@ -131,8 +134,23 @@ class DashboardActivity : AppCompatActivity() {
                     closeDrawer()
                     true
                 }
-                R.id.logout -> {
+                R.id.terms -> {
                     displayView(9)
+                    closeDrawer()
+                    true
+                }
+                R.id.privacy -> {
+                    displayView(10)
+                    closeDrawer()
+                    true
+                }
+                R.id.plan -> {
+                    displayView(11)
+                    closeDrawer()
+                    true
+                }
+                R.id.logout -> {
+                    displayView(12)
                     closeDrawer()
                     true
                 }
@@ -189,6 +207,15 @@ class DashboardActivity : AppCompatActivity() {
             7 -> fragment = PayoutFragment()
             8 -> fragment = MemberlistFragment()
             9 -> {
+                Commonfun.Commonmethod(resources.getString(R.string.termsandcondition),this@DashboardActivity)
+            }
+            10 -> {
+                Commonfun.Commonmethod(resources.getString(R.string.privacy),this@DashboardActivity)
+            }
+            11 -> {
+                Commonfun.Commonmethod(resources.getString(R.string.plan),this@DashboardActivity)
+            }
+            12 -> {
                 val builder1 = AlertDialog.Builder(this@DashboardActivity)
                 builder1.setMessage("Do you want to logout?")
                 builder1.setCancelable(true)

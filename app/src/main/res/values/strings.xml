@@ -78,7 +78,7 @@
     <string name="qty">QTY</string>
     <string name="total">TOTAL</string>
     <string name="award">AWARD</string>
-    <string name="direct">DIRECT SELL</string>
+    <string name="direct">DISTRIBUTORSHIP</string>
     <string name="name1">NAME</string>
     <string name="load">Load More..</string>
     <string name="create_new">CREATE NEW PASSWORD</string>
@@ -115,4 +115,7 @@
         <item>Bank Transfer</item>
         <item>Gateway Transfer</item>
     </string-array>
+    <string name="termsandcondition">https://networkcarrierteleshopping.com/terms-conditions/</string>
+    <string name="privacy">https://networkcarrierteleshopping.com/privacy-policy/</string>
+    <string name="plan">https://networkcarrierteleshopping.com/plan/</string>
 </resources>
