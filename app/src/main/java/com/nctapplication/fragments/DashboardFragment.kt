@@ -16,6 +16,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.DoubleBounce
 import com.nctapplication.R
 import com.nctapplication.adapter.HorizontalRecyclerViewAdapter
+import com.nctapplication.commons.Commonfun
 import com.nctapplication.commons.MyApp
 import com.nctapplication.databinding.FragmentDashboardBinding
 import com.nctapplication.response.DashboardApiResponse
@@ -34,10 +35,7 @@ class DashboardFragment : Fragment() {
     var memberdata: ArrayList<HashMap<String, String>>? = ArrayList()
     lateinit var adapter : HorizontalRecyclerViewAdapter
     private var horizontalLayoutManager: LinearLayoutManager? = null
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }*/
+    var referralcode: String=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,8 +54,14 @@ class DashboardFragment : Fragment() {
     }
     fun dashboard(){
         //val TAG = javaClass.simpleName
-        binding.spinKit.visibility = View.VISIBLE
-        binding.spinKit.setIndeterminateDrawable(doubleBounce)
+        with(binding){
+            spinKit.visibility = View.VISIBLE
+            spinKit.setIndeterminateDrawable(doubleBounce)
+            sharebtn.setOnClickListener {
+                Commonfun.share(referralcode,requireContext())
+            }
+        }
+
 
         val requestBody: RequestBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
@@ -89,37 +93,38 @@ class DashboardFragment : Fragment() {
                             if (apiResponse.getPosts().success == true) {
 
                                 var data    : Data?=apiResponse.getPosts().data
-                                binding.directsale.text=data?.directsale
-                                binding.membership.text=data?.totalMembership.toString()
-                                binding.repurchasing.text=data?.repurchase
-                                var referalCode: ReferalCode?=data?.referalCode
-                                binding.referid.setText(referalCode?.referralCode)//for edittext use settext
-                                binding.claimamount.text=data?.loanClaim
-                                binding.payoutamount.text=data?.payout
-                                var childMember : ArrayList<ChildMember> = data!!.childMember
-                                if(childMember.size>0){
-                                    for(i in 0 until (childMember.size)){
-                                       var resultp = HashMap<String, String>()
-                                        resultp.put("image",
-                                            childMember.get(i).memberImage.toString()
+                                with(binding){
+                                    directsale.text=data?.directsale
+                                    membership.text=data?.totalMembership.toString()
+                                    repurchasing.text=data?.repurchase
+                                    var referalCode: ReferalCode?=data?.referalCode
+                                    referralcode=referalCode?.referralCode.toString()
+                                    referid.setText(referalCode?.referralCode)//for edittext use settext
+                                    claimamount.text=data?.loanClaim
+                                    payoutamount.text=data?.payout
+                                    var childMember : ArrayList<ChildMember> = data!!.childMember
+                                    if(childMember.size>0){
+                                        for(i in 0 until (childMember.size)){
+                                            var resultp = HashMap<String, String>()
+                                            resultp.put("image",
+                                                childMember.get(i).memberImage.toString()
+                                            )
+                                            resultp.put("name",childMember.get(i).memberFname.toString())
+                                            memberdata?.add(resultp)
+
+                                        }
+
+                                        adapter= HorizontalRecyclerViewAdapter(activity,memberdata)
+                                        horizontalLayoutManager = LinearLayoutManager(
+                                            activity,
+                                            LinearLayoutManager.HORIZONTAL,
+                                            false
                                         )
-                                        resultp.put("name",childMember.get(i).memberFname.toString())
-                                        memberdata?.add(resultp)
-
+                                        horizontalRecyclerView.layoutManager =
+                                            horizontalLayoutManager
+                                        horizontalRecyclerView.adapter=adapter
                                     }
-
-                                    adapter= HorizontalRecyclerViewAdapter(activity,memberdata)
-                                    horizontalLayoutManager = LinearLayoutManager(
-                                        activity,
-                                        LinearLayoutManager.HORIZONTAL,
-                                        false
-                                    )
-                                    binding.horizontalRecyclerView.layoutManager =
-                                        horizontalLayoutManager
-                                    binding.horizontalRecyclerView.adapter=adapter
                                 }
-
-
 
                             } else if (apiResponse.getPosts().success==false) {
                                 Utils.showToast(apiResponse.getPosts().message,activity)

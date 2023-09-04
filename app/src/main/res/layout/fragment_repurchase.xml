@@ -64,6 +64,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/oneside_border"
                     android:text="@string/date"
+                    android:textSize="@dimen/_9sdp"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -72,6 +73,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/oneside_border"
                     android:text="@string/qty"
+                    android:textSize="@dimen/_9sdp"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -80,6 +82,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/oneside_border"
                     android:text="@string/total"
+                    android:textSize="@dimen/_9sdp"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -87,6 +90,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/transparent"
+                    android:textSize="@dimen/_9sdp"
                     android:text="@string/comission"
                     android:textColor="@color/white" />
             </LinearLayout>

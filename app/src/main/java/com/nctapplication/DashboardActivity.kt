@@ -32,6 +32,7 @@ import com.nctapplication.response.CouponPriceResponse
 import com.nctapplication.response.ProfileApiResponse
 import com.nctapplication.util.Utils
 import com.nctapplication.viewmodel.CouponPriceViewModel
+import com.nctapplication.viewmodel.DeletememberViewmodel
 import com.nctapplication.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.paperdb.Paper
@@ -47,10 +48,13 @@ class DashboardActivity : AppCompatActivity() {
     lateinit var name : TextView
     lateinit var email : TextView
     lateinit var coupon_price :TextView
+    lateinit var viewmodel: DeletememberViewmodel
     //private var doubleBackToExitPressedOnce = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
+        viewmodel=ViewModelProvider(this).get(DeletememberViewmodel::class.java)
+        binding.lifecycleOwner=this
 
         // Pass the ActionBarToggle action into the drawerListener
         actionBarToggle = ActionBarDrawerToggle(this, binding.drawerLayout,binding.toolbar, 0, 0)//added toolbar to show the hamburger menu
@@ -149,8 +153,18 @@ class DashboardActivity : AppCompatActivity() {
                     closeDrawer()
                     true
                 }
-                R.id.logout -> {
+                R.id.website -> {
                     displayView(12)
+                    closeDrawer()
+                    true
+                }
+                R.id.deleteaccount -> {
+                    displayView(13)
+                    closeDrawer()
+                    true
+                }
+                R.id.logout -> {
+                    displayView(14)
                     closeDrawer()
                     true
                 }
@@ -216,6 +230,35 @@ class DashboardActivity : AppCompatActivity() {
                 Commonfun.Commonmethod(resources.getString(R.string.plan),this@DashboardActivity)
             }
             12 -> {
+                Commonfun.Commonmethod(resources.getString(R.string.website),this@DashboardActivity)
+            }
+            13 -> {
+                val builder1 = AlertDialog.Builder(this@DashboardActivity)
+                builder1.setMessage("Do you want to delete your account?")
+                builder1.setCancelable(true)
+                builder1.setPositiveButton(
+                    "Yes"
+                ) { dialog: DialogInterface, id: Int ->
+                    dialog.cancel()
+                    viewmodel.deletemember()
+                    viewmodel.deletedata.observe(this@DashboardActivity, Observer {
+                        if(it?.success == false){
+                            Paper.book().delete("login")
+                            Paper.book().delete("memberid")
+                            startActivity(Intent(this@DashboardActivity, MainActivity::class.java))
+                            finish()
+                        }
+                    })
+
+                }
+                builder1.setNegativeButton(
+                    "No"
+                ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
+                val alert = builder1.create()
+                alert.show()
+
+            }
+            14 -> {
                 val builder1 = AlertDialog.Builder(this@DashboardActivity)
                 builder1.setMessage("Do you want to logout?")
                 builder1.setCancelable(true)

@@ -1,7 +1,8 @@
 package com.nctapplication.fragments
 
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.nctapplication.R
 import com.nctapplication.adapter.MemberlistAdapter
 import com.nctapplication.commons.MyApp
 import com.nctapplication.databinding.FragmentMemberlistBinding
+import com.nctapplication.model.member.Data
 import com.nctapplication.response.MemberListResponse
 import com.nctapplication.util.Utils
 import com.nctapplication.viewmodel.MemberlistViewModel
@@ -30,7 +32,7 @@ class MemberlistFragment : Fragment() {
     var claimdata: ArrayList<HashMap<String, String>>? = ArrayList()
     lateinit var adapter : MemberlistAdapter
     private var LayoutManager: LinearLayoutManager? = null
-
+    lateinit var DistributorList: ArrayList<Data>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +46,7 @@ class MemberlistFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_memberlist, container, false)
         val rootView = binding.root
         retainInstance = true
-
+        binding.phone.addTextChangedListener(textWatcher)
         return rootView
     }
     fun getDirectsale(){
@@ -79,7 +81,8 @@ class MemberlistFragment : Fragment() {
 
                                 if (data != null) {
                                     if(data.size>0){
-                                        for(i in 0 until (data.size)){
+                                        DistributorList=data
+                                        /*for(i in 0 until (data.size)){
                                             var resultp = HashMap<String, String>()
                                             resultp.put("name",data.get(i).memberFname.toString())
                                             resultp.put("phone",data.get(i).memberPhoneno.toString())
@@ -87,8 +90,8 @@ class MemberlistFragment : Fragment() {
                                             resultp.put("image",data.get(i).memberImage.toString())
                                             claimdata?.add(resultp)
 
-                                        }
-                                        adapter= MemberlistAdapter(activity,claimdata)
+                                        }*/
+                                        adapter= MemberlistAdapter(activity,DistributorList)
                                         LayoutManager = LinearLayoutManager(
                                             activity,
                                             LinearLayoutManager.VERTICAL,
@@ -109,7 +112,7 @@ class MemberlistFragment : Fragment() {
                         // call failed.
                         binding.spinKit.visibility = View.GONE
                         val e = apiResponse.error
-                        Log.e("sushovon",e.message.toString())
+
                     }
                 }
 
@@ -123,5 +126,44 @@ class MemberlistFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         getDirectsale()
     }
+    private fun filter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredlist: ArrayList<Data> = ArrayList()
 
+        // running a for loop to compare elements.
+        for (item in DistributorList) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.memberFname!!.toLowerCase().contains(text.toLowerCase())) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            //Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            adapter.filterList(filteredlist)
+        }
+    }
+    private val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+        }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+
+            if (s.hashCode() == binding.phone.getText().hashCode()) {
+                // do other things
+                if (s != null) {
+                    filter(s.toString())
+                }
+            }
+
+        }
+    }
 }

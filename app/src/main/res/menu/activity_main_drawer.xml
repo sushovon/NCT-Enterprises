@@ -23,7 +23,7 @@
         <item
             android:id="@+id/directsale"
             android:icon="@drawable/direct_sell_icon"
-            android:title="DISTRIBUTORSHIP" />
+            android:title="DISTRIBUTOR" />
         <item
             android:id="@+id/membership"
             android:icon="@drawable/membership_icon"
@@ -39,7 +39,7 @@
         <item
             android:id="@+id/memberlist"
             android:icon="@drawable/team"
-            android:title="MEMBER LIST" />
+            android:title="DISTRIBUTOR LIST" />
         <item
             android:id="@+id/terms"
             android:icon="@drawable/terms_conditions"
@@ -52,6 +52,14 @@
             android:id="@+id/plan"
             android:icon="@drawable/plan"
             android:title="PLAN" />
+        <item
+            android:id="@+id/website"
+            android:icon="@drawable/globe"
+            android:title="GOTO WEBSITE" />
+        <item
+            android:id="@+id/deleteaccount"
+            android:icon="@drawable/delete"
+            android:title="DELETE ACCOUNT" />
         <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"

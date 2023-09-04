@@ -6,6 +6,7 @@ import com.nctapplication.model.addrepurchase.Addrepurchase
 import com.nctapplication.model.appdata.AppData
 import com.nctapplication.model.checkmobile.CheckMobile
 import com.nctapplication.model.claim.Claim
+import com.nctapplication.model.deletemember.Memberdelete
 import com.nctapplication.model.directsale.Directsale
 import com.nctapplication.model.member.MemberList
 import com.nctapplication.model.memberaward.Member
@@ -21,6 +22,7 @@ import com.nctapplication.model.updatepassword.UpdatePassword
 import com.nctapplication.model.wallet.Wallet
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -96,4 +98,7 @@ interface ApiInterface {
 
     @POST("app_payout")
     fun app_payout(@Body body:RequestBody?): Call<AppData>
+
+    @POST("delete_member")
+    suspend  fun delete_member(@Body body:RequestBody?): Response<Memberdelete>
 }

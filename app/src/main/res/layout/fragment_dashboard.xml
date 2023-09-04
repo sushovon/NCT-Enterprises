@@ -51,10 +51,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/textStylexhdpi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/award1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/award2"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_weight="1.2"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -63,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:layout_weight=".8"
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -76,10 +79,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/textStylexhdpi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/award2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_weight="1.2"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/membershipaward1"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -88,6 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:layout_weight=".8"
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -101,9 +107,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/textStylexhdpi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_weight="1.2"
+                    android:gravity="center"
                     android:text="@string/award3"
                     android:textColor="@color/white" />
 
@@ -113,6 +121,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:layout_weight=".8"
+
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

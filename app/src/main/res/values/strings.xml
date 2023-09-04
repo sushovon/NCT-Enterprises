@@ -67,7 +67,8 @@
         <item>@drawable/logout</item>
     </array>
     <string name="saleaward">DIRECT SALE AWARD</string>
-    <string name="membershipaward">DISTRIBUTOR AWARD</string>
+    <string name="membershipaward">SUB DISTRIBUTOR AWARDS</string>
+    <string name="membershipaward1">SUB DISTRIBUTOR AWARD</string>
     <string name="repurchaseaward">REPURCHASING AWARD</string>
     <string name="totalaward">TOTAL AWARD</string>
     <string name="rupee">\u20B9</string>
@@ -78,7 +79,8 @@
     <string name="qty">QTY</string>
     <string name="total">TOTAL</string>
     <string name="award">AWARD</string>
-    <string name="direct">DISTRIBUTORSHIP</string>
+    <string name="direct">DISTRIBUTOR AWARDS</string>
+    <string name="direct1">DISTRIBUTOR AWARD</string>
     <string name="name1">NAME</string>
     <string name="load">Load More..</string>
     <string name="create_new">CREATE NEW PASSWORD</string>
@@ -97,7 +99,7 @@
     <string name="data_not_found">data not found</string>
     <string name="search">Search</string>
     <string name="status">STATUS</string>
-    <string name="comission">COMISSION</string>
+    <string name="comission">COMMISSION</string>
     <string name="uploaded">Uploaded</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -112,10 +114,11 @@
     <string name="claimsuccess">Claim request sent successfully</string>
     <string-array name="Languages">
         <item>Cash</item>
-        <item>Bank Transfer</item>
-        <item>Gateway Transfer</item>
+        <!--<item>Bank Transfer</item>-->
+        <item>UPI payment</item>
     </string-array>
     <string name="termsandcondition">https://networkcarrierteleshopping.com/terms-conditions/</string>
     <string name="privacy">https://networkcarrierteleshopping.com/privacy-policy/</string>
     <string name="plan">https://networkcarrierteleshopping.com/plan/</string>
+    <string name="website">https://networkcarrierteleshopping.com</string>
 </resources>

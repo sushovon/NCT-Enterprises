@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,11 +11,12 @@ import com.nctapplication.R
 import com.nctapplication.circleimage.CircleImageView
 import com.nctapplication.commons.Constants
 import com.nctapplication.commons.MyApplication
+import com.nctapplication.model.member.Data
 
 class MemberlistAdapter :
     RecyclerView.Adapter<MemberlistAdapter.MyViewHolder> {
 
-    var data: ArrayList<HashMap<String, String>>? = null
+    var data: ArrayList<Data>? = null
     var resultp = HashMap<String, String>()
     var context: Context? = null
 
@@ -34,8 +34,10 @@ class MemberlistAdapter :
         }
     }
 
-    constructor(context: Context?,
-                arraylist: ArrayList<HashMap<String, String>>?)  {
+    constructor(
+        context: Context?,
+        arraylist: ArrayList<Data>
+    )  {
         data = arraylist
         this.context = context
     }
@@ -49,9 +51,16 @@ class MemberlistAdapter :
     override fun getItemCount(): Int {
         return data?.size!!
     }
-
+    fun filterList(filterlist: ArrayList<Data>) {
+        // below line is to add our filtered
+        // list in our course array list.
+        data = filterlist
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        resultp = data!![position]
+        /*resultp = data!![position]
 
         holder.memberId.text = resultp["id"]
         holder.memberPhoneno.text = resultp["phone"]
@@ -60,6 +69,18 @@ class MemberlistAdapter :
             // Load image via Glide lib using context
             Glide.with(context!!)
                 .load(Constants.BASE_URL_IMAGE+resultp["image"]).placeholder(R.drawable.placeholderprofile)
+                .error(Glide.with(context!!).load(R.drawable.placeholderprofile))
+                .into(holder.image)
+        } else {
+            Glide.with(context!!).load(R.drawable.placeholderprofile).into(holder.image)
+        }*/
+        holder.memberId.text=data?.get(position)?.memberId
+        holder.memberPhoneno.text=data?.get(position)?.memberPhoneno
+        holder.memberFname.text=data?.get(position)?.memberFname
+        if (MyApplication.isValidContextForGlide(context)) {
+            // Load image via Glide lib using context
+            Glide.with(context!!)
+                .load(Constants.BASE_URL_IMAGE+data?.get(position)?.memberImage).placeholder(R.drawable.placeholderprofile)
                 .error(Glide.with(context!!).load(R.drawable.placeholderprofile))
                 .into(holder.image)
         } else {

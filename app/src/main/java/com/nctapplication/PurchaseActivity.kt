@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.DoubleBounce
@@ -35,6 +36,7 @@ import dev.shreyaspatil.easyupipayment.model.PaymentApp
 import dev.shreyaspatil.easyupipayment.model.TransactionDetails
 import dev.shreyaspatil.easyupipayment.model.TransactionStatus
 import io.paperdb.Paper
+import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -59,12 +61,17 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
     lateinit var product_qnty4: String
     private lateinit var easyUpiPayment: EasyUpiPayment
     val transaction_Id = "TID" + System.currentTimeMillis()
-    lateinit var descriptionupi: String
+    var descriptionupi: String="product purchase amount"
     var productprice : String = ""
+    lateinit var viewModel: AddrepurchaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_purchase)
+        viewModel=ViewModelProvider(this).get(AddrepurchaseViewModel::class.java)
+        binding.lifecycleOwner=this
+
+
         price= intent.getIntExtra("price",0)
         getproduct()
        /* var customers = ArrayList<String>()
@@ -109,7 +116,8 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
                 )
             }
             else{
-                   addrepurchase()
+                    upipayment()
+
             }
         }
     }
@@ -287,7 +295,6 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
             .build()
 
         if(MyApp.getInstance()!!.isNetworkAvailable()){
-            val viewModel: AddrepurchaseViewModel = ViewModelProvider(this).get(AddrepurchaseViewModel::class.java)
             viewModel.add_repurchase(requestBody)?.observe(this@PurchaseActivity,object : Observer<AddrepurchaseResponse?> {
                 override fun onChanged(apiResponse: AddrepurchaseResponse?) {
 
@@ -328,7 +335,7 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
         }
     }
     fun upipayment(){
-
+        productprice=total.toString()
         try {
             easyUpiPayment = EasyUpiPayment(this) {
                 this.paymentApp = PaymentApp.ALL
@@ -338,7 +345,7 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
                 this.transactionRefId = transaction_Id
                 this.payeeMerchantCode = transaction_Id
                 this.description = descriptionupi
-                this.amount = productprice.toDoubleOrNull()?.toString()
+                this.amount = productprice.toDoubleOrNull().toString()
             }
             // END INITIALIZATION
 
@@ -380,7 +387,14 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
             "Success",
             this@PurchaseActivity
         )
-        uploadtransaction(transactionid)
+        lifecycleScope.launch {
+            uploadtransaction(transactionid)
+        }
+        lifecycleScope.launch {
+            addrepurchase()
+        }
+
+
     }
 
     private fun onTransactionSubmitted() {
@@ -402,10 +416,6 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
     }
     fun uploadtransaction(transactionid : String){
         //val TAG = javaClass.simpleName
-        binding.spinKit.visibility = View.VISIBLE
-        binding.spinKit.setIndeterminateDrawable(doubleBounce)
-
-
 
         val requestBody: RequestBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
@@ -423,30 +433,25 @@ class PurchaseActivity : AppCompatActivity(), PaymentStatusListener {
 
                     if (apiResponse == null) {
                         // handle error here
-                        binding.spinKit.visibility = View.GONE
                         return
                     }
                     if (apiResponse.error == null) {
                         // call is successful
-                        binding.spinKit.setVisibility(View.GONE);
                         if (apiResponse.posts == null) {
-                            binding.spinKit.visibility = View.GONE
-                            Utils.showToast(
+                            /*Utils.showToast(
                                 resources.getString(R.string.data_not_found),
                                 this@PurchaseActivity
-                            )
+                            )*/
 
                         } else {
                             if (apiResponse.getPosts().success == true) {
-                                Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
-                                finish()
+                                //Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
                             } else if (apiResponse.getPosts().success==false) {
-                                Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
+                                //Utils.showToast(apiResponse.getPosts().message,this@PurchaseActivity)
                             }
                         }
                     } else {
                         // call failed.
-                        binding.spinKit.visibility = View.GONE
                         val e = apiResponse.error
 
                     }
