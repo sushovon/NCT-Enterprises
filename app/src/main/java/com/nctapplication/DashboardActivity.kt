@@ -375,7 +375,7 @@ class DashboardActivity : AppCompatActivity() {
 
                             if (apiResponse.getPosts().success == true) {
                                 var data    : Data? = apiResponse.getPosts().data
-                                coupon_price.setText("Total coupon price: "+ data?.totalCouponPrice.toString())
+                                coupon_price.setText("Coupon award: "+ data?.totalCouponPrice.toString())
 
 
                             } else if (apiResponse.getPosts().success==false) {

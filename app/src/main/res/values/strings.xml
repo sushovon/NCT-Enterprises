@@ -48,7 +48,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="award1">DIRECT SALE AWARD</string>
-    <string name="award2">DISTRIBUTOR AWARD</string>
+    <string name="award2">DISTRIBUTOR\nAWARD</string>
     <string name="award3">REPURCHASING AWARD</string>
     <string name="share">SHARE REFFERAL</string>
     <string name="claim_amount">CLAIM AMOUNT</string>
@@ -99,7 +99,7 @@
     <string name="data_not_found">data not found</string>
     <string name="search">Search</string>
     <string name="status">STATUS</string>
-    <string name="comission">COMMISSION</string>
+    <string name="comission">AWARD</string>
     <string name="uploaded">Uploaded</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

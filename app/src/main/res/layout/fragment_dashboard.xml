@@ -146,6 +146,7 @@
                 android:background="@drawable/rounded_corner_oneside"
                 android:clickable="false"
                 android:hint="XXXXX"
+                android:enabled="false"
                 android:paddingStart="25dp"
                 android:textColorHint="@color/grey" />
 
