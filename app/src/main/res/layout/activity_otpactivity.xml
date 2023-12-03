@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.nctapplication.viewmodel.ResendViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OTPActivity">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="@{(v)->viewmodel.onLoginClicked(v)}"
+            android:background="@drawable/rounded_button_orange"
+            android:padding="6dp"
+            android:text="@string/send_confirmation_code"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/we_sent_you_a_4_digit_code"
+            android:layout_below="@+id/btnSubmit"
+            android:id="@+id/digit"
+            android:visibility="visible"
+            android:textSize="20sp" />
+
+        <com.nctapplication.commons.OtpEditText
+            android:id="@+id/etOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            android:cursorVisible="false"
+            android:maxLength="4"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/digit"
+            android:inputType="number"
+            android:background="@drawable/round_corner" />
+    </RelativeLayout>
+</layout>

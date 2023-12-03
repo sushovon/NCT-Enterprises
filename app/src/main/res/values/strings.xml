@@ -31,7 +31,8 @@
     <string name="userid">USER ID</string>
     <string name="referid">REFFERAL ID</string>
     <string name="submit">SUBMIT</string>
-
+    <string name="send_confirmation_code">Resend Confirmation Code</string>
+    <string name="we_sent_you_a_4_digit_code">We sent you a 4-digit code.</string>
 
     <string-array name="nav_drawer_labels">
         <item>DASHBOARD</item>

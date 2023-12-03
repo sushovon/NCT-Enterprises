@@ -2,6 +2,7 @@ package com.nctapplication.commons
 import com.example.example.dashboard.DashboardMember
 import com.nctapplication.model.couponprice.CouponPrice
 import com.nctapplication.model.Login
+import com.nctapplication.model.Resend
 import com.nctapplication.model.addrepurchase.Addrepurchase
 import com.nctapplication.model.appdata.AppData
 import com.nctapplication.model.checkmobile.CheckMobile
@@ -101,4 +102,10 @@ interface ApiInterface {
 
     @POST("delete_member")
     suspend  fun delete_member(@Body body:RequestBody?): Response<Memberdelete>
+
+    @POST("resend_otp")
+    suspend  fun resend_otp(@Body body: RequestBody?): Resend
+
+    @POST("validate_otp")
+    suspend  fun validate_otp(@Body body: RequestBody?): Resend
 }

@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -16,8 +17,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.DoubleBounce
+import com.nctapplication.commons.Commonfun
 import com.nctapplication.commons.MyApp
 import com.nctapplication.databinding.ActivityRegisterBinding
+import com.nctapplication.model.register.Data
 import com.nctapplication.response.ProfileUpdateResponse
 import com.nctapplication.response.RegisterResponse
 import com.nctapplication.util.Utils
@@ -233,7 +236,10 @@ class RegisterActivity : AppCompatActivity() {
                         } else {
                             if (apiResponse.getPosts().success == true) {
                                 Utils.showToast(apiResponse.getPosts().message,this@RegisterActivity)
-                                val intent = Intent(this@RegisterActivity, BuyActivity::class.java)
+                                //var data : Data? =apiResponse.getPosts().data
+                                //Paper.book().write("memberid", data?.memberId.toString())
+                                Commonfun.mobile=binding.phone.text.toString().trim()
+                                val intent = Intent(this@RegisterActivity, OTPActivity::class.java)
                                 startActivity(intent)
                             } else if (apiResponse.getPosts().success==false) {
                                 Utils.showToast(apiResponse.getPosts().message,this@RegisterActivity)
